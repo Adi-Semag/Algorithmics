@@ -1,0 +1,107 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('https: //images3.alphacoders.com/133/1332803.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #ffffff;
+    margin-top: 50px;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+h3 {
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 10px;
+    color: #e0e0e0;
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+button {
+    background-color: #1e90ff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #1c86ee;
+    transform: scale(1.05);
+}
+
+/* Form Styles */
+form {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 30px;
+    margin-top: 70px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Layout Styles */
+div {
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    form {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1200px) {
+    form {
+        width: 40%;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
