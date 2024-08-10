@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+
+<body>
+    <h1>Data Fusion Results</h1>
+    <div>
+        <h3>Result Plot:</h3>
+        <img src="{{ url_for('static', filename='result_plot.png') }}" alt="Result Plot">
+    </div>
+    <div>
+        <h3>Combined Optical and DEM:</h3>
+        <img src="{{ url_for('static', filename='combined_plot.png') }}" alt="Combined Plot">
+    </div>
+</body>
+
+</html>
