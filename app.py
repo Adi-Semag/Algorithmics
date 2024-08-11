@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from skimage import transform
 from scipy.interpolate import griddata
 import os
+import laspy  # Library for reading .laz files
 
 app = Flask(__name__)
 
@@ -25,7 +26,7 @@ def upload():
 
     optical_path = os.path.join(UPLOAD_FOLDER, 'optical_image.jpg')
     radar_path = os.path.join(UPLOAD_FOLDER, 'radar_image.jpg')
-    lidar_path = os.path.join(UPLOAD_FOLDER, 'lidar_data.txt')
+    lidar_path = os.path.join(UPLOAD_FOLDER, 'lidar_data.laz')
 
     optical_file.save(optical_path)
     radar_file.save(radar_path)
@@ -34,13 +35,18 @@ def upload():
     # Load images and LiDAR data
     optical_img = cv2.imread(optical_path, cv2.IMREAD_GRAYSCALE)
     radar_img = cv2.imread(radar_path, cv2.IMREAD_GRAYSCALE)
-    lidar_data = np.loadtxt(lidar_path)
     
+    # Decompress and read LiDAR data from .laz file
+    with laspy.open(lidar_path) as lidar_data:
+        las = lidar_data.read()
+        x = las.X * las.header.scale[0] + las.header.offset[0]
+        y = las.Y * las.header.scale[1] + las.header.offset[1]
+        z = las.Z * las.header.scale[2] + las.header.offset[2]
+
     # Resize radar image to match optical image dimensions
     radar_img = cv2.resize(radar_img, (optical_img.shape[1], optical_img.shape[0]))
 
     # Process LiDAR data
-    x, y, z = lidar_data[:, 0], lidar_data[:, 1], lidar_data[:, 2]
     x_grid, y_grid = np.linspace(min(x), max(x), 100), np.linspace(min(y), max(y), 100)
     x_grid, y_grid = np.meshgrid(x_grid, y_grid)
     z_grid = griddata((x, y), z, (x_grid, y_grid), method='cubic')
