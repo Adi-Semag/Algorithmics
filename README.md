@@ -16,3 +16,4 @@ How to Run:
 Run in terminal : `python app.py`
 Frontend is stored in in "templates" folder
 Flask web app is implemented
+Input files are available as `optical_image`, `radar_image`, and `https://drive.google.com/file/d/1eHMVRkGgJF1rcTN6jx26yK7Ec0ri5QIm/view?usp=sharing` for LiDAR image.
